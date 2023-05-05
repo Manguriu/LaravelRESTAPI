@@ -15,22 +15,7 @@ class SectionController extends Controller
 
     }
 
-    public function Store(Request $request ){
-        $validateData = $request->validate([
-            'class_id' => 'required',
-            'section_name' => 'required|unique:sections|max:25',
-        ]);
-
-        Section::insert([
-            'class_id' => $request ->class_id,
-            'section_name' => $request ->section_name,
-            'created_at' => Carbon::now(),
-            
-        ]);
-
-
-        return response('Section inserted ');
-    }
+   
     public function Edit($id){
         $section = Section::findOrFail($id);
         return response()->json($section);
